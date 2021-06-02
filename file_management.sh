@@ -19,7 +19,7 @@ display_contents_of_file() {
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
 
-    read -n 1 -r -s -p $'Press enter to continue...\n'
+    read -n 1 -r -s -p $'Press any key to continue...\n'
 }
 
 remove_file() {
@@ -38,7 +38,7 @@ remove_file() {
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
 
-    read -n 1 -r -s -p $'Press enter to continue...\n'
+    read -n 1 -r -s -p $'Press any key to continue...\n'
 }
 
 copy_file() {
@@ -59,7 +59,7 @@ copy_file() {
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
 
-    read -n 1 -r -s -p $'Press enter to continue...\n'
+    read -n 1 -r -s -p $'Press any key to continue...\n'
 }
 
 list_file() {
@@ -78,7 +78,7 @@ list_file() {
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
 
-    read -n 1 -r -s -p $'Press enter to continue...\n'
+    read -n 1 -r -s -p $'Press any key to continue...\n'
 }
 
 size_of_file() {

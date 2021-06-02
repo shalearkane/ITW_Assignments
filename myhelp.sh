@@ -42,7 +42,10 @@ unix_help_main_menu() {
 
 expert_menu() {
     case "$1" in
-    help) clear ;;
+    help)
+        echo "Help is not available at the moment, but you can always help yourself"
+        clear
+        ;;
     file)
         clear
         bash file_management.sh

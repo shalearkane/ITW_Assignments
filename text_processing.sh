@@ -6,7 +6,7 @@ search_file() {
     local file_name
     read -p "Enter the filename: " file_name
     find ~/ -type f -name "$file_name" | less
-    read -n 1 -r -s -p $'Press enter to continue...\n'
+    read -n 1 -r -s -p $'Press any key to continue...\n'
 }
 
 count_wc() {
@@ -25,7 +25,7 @@ count_wc() {
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
 
-    read -n 1 -r -s -p $'Press enter to continue...\n'
+    read -n 1 -r -s -p $'Press any key to continue...\n'
 }
 
 display_diff() {
@@ -40,14 +40,14 @@ display_diff() {
             i=$((i + 1))
         done
         if [[ $i -ne 1 ]]; then
-            echo "You've entered wrong filename or more than one file"
+            echo -e "${RED}You've entered wrong filename or more than one file${ENDCOLOUR}"
             continue
         fi
 
         if file "$file_1" | grep -q text; then
             break
         else
-            echo "The file is not a text file"
+            echo -e "${RED}error: The file is not a text file or cannot be found${ENDCOLOUR}"
         fi
     done
 
@@ -58,24 +58,24 @@ display_diff() {
             i=$((i + 1))
         done
         if [[ $i -ne 1 ]]; then
-            echo "You've entered wrong filename"
+            echo -e "${RED}error: You've entered wrong filename or more than one file${ENDCOLOUR}"
             continue
         fi
 
         if file "$file_2" | grep -q text; then
             break
         else
-            echo "You have entered wrong filename or the file is not a text file"
+            echo -e "${RED}error: The file is not a text file or cannot be found${ENDCOLOUR}"
         fi
     done
 
-    diff file_1 file_2 | less
+    diff -y $file_1 $file_2 | less
 }
 
 text_processing_menu() {
-    clear
     local selection
     until [ "$selection" = "0" ]; do
+        clear
         echo -e "\n${COLOUR}1${ENDCOLOUR} -- Search a file for a pattern"
         echo -e "\n${COLOUR}2${ENDCOLOUR} -- Count lines, words, and characters in specified files"
         echo -e "\n${COLOUR}3${ENDCOLOUR} -- Display line differences between two files"

@@ -3,4 +3,5 @@
 RED="\e[91m"
 BLUE="\e[94m"
 GREEN="\e[92m"
+GREY="\e[37m"
 ENDCOLOUR="\e[0m"

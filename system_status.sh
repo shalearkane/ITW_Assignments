@@ -3,11 +3,11 @@ source helper_func.sh
 source colours.sh
 
 current_date() {
-    while sleep 0.5; do
+    while sleep 0.1; do
         local throwaway
         clear
         date
-        read -t 0.5 -n 1 -r -s -p $'\nPress enter to exit...\n' throwaway
+        read -t 0.5 -n 1 -r -s -p $'\nPress any key to exit...\n' throwaway
         if [ -z $throwaway ]; then
             continue
         else
@@ -17,7 +17,7 @@ current_date() {
 }
 
 disk_usage() {
-    echo -e "${COLOUR}Disk usage of system is:${ENDCOLUOR} \n $(df -h)" | less -r
+    echo -e "${COLOUR}Disk usage of system is:${ENDCOLOUR} \n $(df -h)" | less -r
 }
 
 local_env_vars() {
@@ -32,13 +32,13 @@ process_status_info() {
     else
         ps $pid_n
     fi
-
+    read -n 1 -r -s -p $'Press any key to continue...\n'
 }
 
 system_status_menu() {
-    clear
     local selection
     until [ "$selection" = "0" ]; do
+        clear
         echo -e "\n${COLOUR}1${ENDCOLOUR} -- Display the current date and time"
         echo -e "\n${COLOUR}2${ENDCOLOUR} -- Current disk usage"
         echo -e "\n${COLOUR}3${ENDCOLOUR} -- List current local and environmental"
