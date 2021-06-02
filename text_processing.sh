@@ -15,8 +15,7 @@ count_wc() {
     read -p "Enter the path of the file: " file_path
 
     for l in $file_path; do
-        if file "$l" | grep -q text
-        then
+        if file "$l" | grep -q text; then
             flag=1
             echo -e "${COLOUR}The count of lines, words, and characters in $l is:${ENDCOLOUR} \n $(wc $l)" | less -r
         fi
@@ -30,7 +29,7 @@ count_wc() {
 }
 
 display_diff() {
-    local file_1 
+    local file_1
     local file_2
 
     while true; do
@@ -38,15 +37,14 @@ display_diff() {
         read -p "Enter the path of the first file: " file_1
 
         for l in $file_1; do
-            i=$((i+1))
+            i=$((i + 1))
         done
-        if [[ $i -ne 1 ]] ; then
+        if [[ $i -ne 1 ]]; then
             echo "You've entered wrong filename or more than one file"
             continue
         fi
 
-        if file "$file_1" | grep -q text
-        then
+        if file "$file_1" | grep -q text; then
             break
         else
             echo "The file is not a text file"
@@ -57,15 +55,14 @@ display_diff() {
         local i=0
         read -p "Enter the path of the second file: " file_2
         for l in $file_2; do
-            i=$((i+1))
+            i=$((i + 1))
         done
-        if [[ $i -ne 1 ]] ; then
+        if [[ $i -ne 1 ]]; then
             echo "You've entered wrong filename"
             continue
         fi
-        
-        if file "$file_2" | grep -q text
-        then
+
+        if file "$file_2" | grep -q text; then
             break
         else
             echo "You have entered wrong filename or the file is not a text file"
@@ -91,15 +88,29 @@ text_processing_menu() {
 
         center_text_prompt "\b\bEnter your choice: " " "
         read selection
-        case $selection in 
-            1 ) clear; search_file ;;
-            2 ) clear; count_wc ;;
-            3 ) clear; display_diff ;;
-            4 ) clear; exit 0 ;;
-            * ) clear; echo "enter something useful" ;;
+        case $selection in
+        1)
+            clear
+            search_file
+            ;;
+        2)
+            clear
+            count_wc
+            ;;
+        3)
+            clear
+            display_diff
+            ;;
+        4)
+            clear
+            exit 0
+            ;;
+        *)
+            clear
+            echo "enter something useful"
+            ;;
         esac
     done
 }
 
 text_processing_menu
-

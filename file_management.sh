@@ -97,7 +97,6 @@ size_of_file() {
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
 
-    
 }
 
 file_management_menu() {
