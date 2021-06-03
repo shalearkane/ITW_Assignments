@@ -1,6 +1,6 @@
 # ITW_Assignments
 
-Here's the near complete ITW_Assignment_5 with extensive error reporting.
+Here's the near complete ITW_Assignment_5
 
 ## Main features:
 * Complete Wildcard support
@@ -14,3 +14,6 @@ Here's the near complete ITW_Assignment_5 with extensive error reporting.
 * Finding bugs
 
 Please test and notify me about bugs.
+
+### Author
+Soumik Dutta
