@@ -11,7 +11,11 @@ display_contents_of_file() {
     for f in $file_path; do
         if [[ -f "$f" ]]; then
             flag=1
-            echo -e "${COLOUR}The contents of $f is:${ENDCOLOUR} \n $(cat $f)" | less -r
+            if [[ -r "$f" ]]; then
+                echo -e "${COLOUR}The contents of $f is:${ENDCOLOUR} \n $(cat $f)" | less -r --prompt="Press q to exit"
+            else
+                echo -e "${RED}The file is not readable${ENDCOLOUR}"
+            fi
         fi
     done
 
@@ -29,8 +33,11 @@ remove_file() {
     for r in $file_path; do
         if [[ -f "$r" ]]; then
             flag=1
-            rm $r
-            echo -e "Deleted $r\n"
+            if rm $r; then
+                echo -e "Deleted $r\n"
+            else
+                echo -e "${RED}error: while deleting${ENDCOLOUR}"
+            fi
         fi
     done
 
@@ -50,8 +57,11 @@ copy_file() {
     for c in $file_path; do
         if [[ -f "$c" && -d "$file_copy_location" ]]; then
             flag=1
-            cp -t "$file_copy_location" "$file_path"
-            echo -e "Copied $c to $file_copy_location\n"
+            if cp -t "$file_copy_location" "$file_path"; then
+                echo -e "Copied $c to $file_copy_location\n"
+            else
+                echo -e "${RED}error: while copying${ENDCOLOUR}"
+            fi
         fi
     done
 
@@ -70,7 +80,7 @@ list_file() {
     for l in $file_path; do
         if [[ -d "$l" ]]; then
             flag=1
-            echo -e "${COLOUR}The contents of $f is:${ENDCOLOUR} \n $(ls $l)" | less -r
+            echo -e "${COLOUR}The contents of $f is:${ENDCOLOUR} \n $(ls $l)" | less -r --prompt="Press q to exit"
         fi
     done
 
@@ -87,16 +97,24 @@ size_of_file() {
     read -p "Enter the path of the file: " file_path
 
     for s in $file_path; do
+        if [[ -d "$s" ]]; then
+            echo -e "${RED}error: $s is a directory, skipping...${ENDCOLOUR}"
+            continue
+        fi
         if [[ -f "$s" ]]; then
             flag=1
-            du -h "$s" | cut -f1
+            if du -h "$s" | cut -f1; then
+                echo
+            else
+                echo "The size of file cannot be shown"
+            fi
         fi
     done
 
-    if [[ $flag != 1 ]]; then
+    if [[ $flag != 1 && ! -d "$s" ]]; then
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
-
+    read -n 1 -r -s -p $'Press any key to continue...\n'
 }
 
 file_management_menu() {

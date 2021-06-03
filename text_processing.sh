@@ -3,21 +3,43 @@ source helper_func.sh
 source colours.sh
 
 search_file() {
-    local file_name
-    read -p "Enter the filename: " file_name
-    find ~/ -type f -name "$file_name" | less
+    local file_path
+    local pattern
+    read -p "Enter the filename: " file_path
+    read -p "Enter the pattern to be searched for: " pattern
+    for l in $file_path; do
+        if file "$l" | grep -q text; then
+            flag=1
+            if grep -Eq "$pattern" "$l"; then
+                grep -HEns "$pattern" "$l" | less -r --prompt="Press q to exit"
+            else
+                echo -e "${RED}error: $l has no matching text${ENDCOLOUR}" | less -r
+            fi
+        fi
+    done
+
+    if [[ $flag != 1 ]]; then
+        echo -e "${RED}File not found${ENDCOLOUR}"
+    fi
+
     read -n 1 -r -s -p $'Press any key to continue...\n'
 }
 
 count_wc() {
     local file_path
     local flag
+    local lines
+    local words
+    local chars
     read -p "Enter the path of the file: " file_path
 
     for l in $file_path; do
         if file "$l" | grep -q text; then
             flag=1
-            echo -e "${COLOUR}The count of lines, words, and characters in $l is:${ENDCOLOUR} \n $(wc $l)" | less -r
+            lines="${COLOUR}$(wc -l $l | cut -d " " -f1)${ENDCOLOUR}"
+            words="${COLOUR}$(wc -w $l | cut -d " " -f1)${ENDCOLOUR}"
+            chars="${COLOUR}$(wc -m $l | cut -d " " -f1)${ENDCOLOUR}"
+            echo -e "$l has $lines lines, $words words and $chars characters.\n" | less -r --prompt="Press q to exit"
         fi
     done
 
@@ -69,7 +91,7 @@ display_diff() {
         fi
     done
 
-    diff -y $file_1 $file_2 | less
+    diff --color -y $file_1 $file_2 | less -r --prompt="Press q to exit"
 }
 
 text_processing_menu() {
@@ -101,13 +123,13 @@ text_processing_menu() {
             clear
             display_diff
             ;;
-        4)
+        q | 4)
             clear
             exit 0
             ;;
         *)
             clear
-            echo "enter something useful"
+            echo -e "${RED}error: Enter correct choice [1-5] ... ${ENDCOLOUR}"
             ;;
         esac
     done

@@ -27,13 +27,13 @@ unix_help_main_menu() {
             clear
             bash system_status.sh
             ;;
-        4)
+        q | 4)
             clear
             exit 0
             ;;
         *)
             clear
-            echo -e "\n${RED}Enter correct input\n${ENDCOLOUR}"
+            echo -e "${RED}error: Enter correct choice [1-4] ... ${ENDCOLOUR}"
             ;;
         esac
     done
@@ -43,7 +43,7 @@ unix_help_main_menu() {
 expert_menu() {
     case "$1" in
     help)
-        echo "Help is not available at the moment, but you can always help yourself"
+        bash help.sh
         clear
         ;;
     file)
@@ -58,9 +58,13 @@ expert_menu() {
         clear
         bash system_status.sh
         ;;
+    author)
+        clear
+        echo "Soumik Dutta"
+        ;;
     *)
         clear
-        echo -e "\n${RED}Enter correct input\n${ENDCOLOUR}"
+        echo -e "${RED}error: Enter correct argument [file, text, status, help] ... see help for details.${ENDCOLOUR}"
         ;;
     esac
 }
@@ -75,4 +79,4 @@ else
     expert_menu "$1"
 fi
 
-echo -e "Script exited\n"
+echo -e "\nScript exited."

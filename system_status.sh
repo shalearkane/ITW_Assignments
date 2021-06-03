@@ -17,11 +17,11 @@ current_date() {
 }
 
 disk_usage() {
-    echo -e "${COLOUR}Disk usage of system is:${ENDCOLOUR} \n $(df -h)" | less -r
+    echo -e "${COLOUR}Disk usage of system is:${ENDCOLOUR} \n $(df -h)" | less -r --prompt="Press q to exit"
 }
 
 local_env_vars() {
-    echo -e "The local and environment variables are: \n $(printenv)" | less -r
+    echo -e "The local and environment variables are: \n $(printenv)" | less -r --prompt="Press q to exit"
 }
 
 process_status_info() {
@@ -69,13 +69,13 @@ system_status_menu() {
             clear
             process_status_info
             ;;
-        5)
+        q | 5)
             clear
             exit 0
             ;;
         *)
             clear
-            echo "enter something useful"
+            echo -e "${RED}error: Enter correct choice [1-5] ... ${ENDCOLOUR}"
             ;;
         esac
     done
