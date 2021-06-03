@@ -31,7 +31,7 @@ unix_help_main_menu() {
             ;;
         *)
             clear
-            center_text "${RED}error: Enter correct choice [1-4] ... ${ENDCOLOUR}"
+            center_text "${RED}error: Enter correct choice [1-4]${ENDCOLOUR}"
             ;;
         esac
     done
@@ -67,6 +67,7 @@ expert_menu() {
     esac
 }
 
+clear
 if (($# == 0)); then
     export MYHELP_MODE=novice
     export COLOUR=$GREEN

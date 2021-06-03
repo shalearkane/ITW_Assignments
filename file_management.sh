@@ -83,7 +83,7 @@ list_file() {
     for l in $file_path; do
         if [[ -d "$l" ]]; then
             flag=1
-            echo -e "${COLOUR}The contents of $f is:${ENDCOLOUR} \n $(ls $l)" | less -r --prompt="Press q to exit"
+            echo -e "${COLOUR}The contents of $l is:${ENDCOLOUR}\n$(ls $l)" | less -r --prompt="Press q to exit"
         fi
     done
 
