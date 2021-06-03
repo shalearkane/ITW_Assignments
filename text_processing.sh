@@ -111,26 +111,22 @@ text_processing_menu() {
         fi
 
         center_text_prompt "\b\bEnter your choice: " " "
-        read selection
+        read -n 1 -r selection
+        clear
         case $selection in
         1)
-            clear
             search_file
             ;;
         2)
-            clear
             count_wc
             ;;
         3)
-            clear
             display_diff
             ;;
         q | 4)
-            clear
             exit 0
             ;;
         *)
-            clear
             center_text "${RED}error: Enter correct choice [1-5]${ENDCOLOUR}"
             ;;
         esac

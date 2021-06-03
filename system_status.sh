@@ -54,30 +54,25 @@ system_status_menu() {
         fi
 
         center_text_prompt "Enter your choice: " " "
-        read selection
+        read -n 1 -r selection
+        clear
         case $selection in
         1)
-            clear
             current_date
             ;;
         2)
-            clear
             disk_usage
             ;;
         3)
-            clear
             local_env_vars
             ;;
         4)
-            clear
             process_status_info
             ;;
         q | 5)
-            clear
             exit 0
             ;;
         *)
-            clear
             center_text "${RED}error: Enter correct choice [1-5]${ENDCOLOUR}"
             ;;
         esac

@@ -11,26 +11,22 @@ unix_help_main_menu() {
         echo -e "\n${COLOUR}3${ENDCOLOUR} -- System Status Commands"
         echo -e "\n${COLOUR}4${ENDCOLOUR} -- Exit\n"
         center_text_prompt "\b\bEnter your choice: " " "
-        read selection
+        read -n 1 -r selection
+        clear
         case $selection in
         1)
-            clear
             bash file_management.sh
             ;;
         2)
-            clear
             bash text_processing.sh
             ;;
         3)
-            clear
             bash system_status.sh
             ;;
         q | 4)
-            clear
             exit 0
             ;;
         *)
-            clear
             center_text "${RED}error: Enter correct choice [1-4]${ENDCOLOUR}"
             ;;
         esac
@@ -39,29 +35,24 @@ unix_help_main_menu() {
 }
 
 expert_menu() {
+    clear
     case "$1" in
     help)
         bash help.sh
-        clear
         ;;
     file)
-        clear
         bash file_management.sh
         ;;
     text)
-        clear
         bash text_processing.sh
         ;;
     status)
-        clear
         bash system_status.sh
         ;;
     author)
-        clear
         echo "Soumik Dutta"
         ;;
     *)
-        clear
         center_text "${RED}error: Enter correct argument [file, text, status, help] ... see help for details.${ENDCOLOUR}"
         ;;
     esac

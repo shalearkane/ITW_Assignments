@@ -137,34 +137,28 @@ file_management_menu() {
         fi
 
         center_text_prompt "\b\bEnter your choice: " " "
-        read selection
+        read -n 1 -r selection
+        clear
         case $selection in
         1)
-            clear
             display_contents_of_file
             ;;
         2)
-            clear
             remove_file
             ;;
         3)
-            clear
             copy_file
             ;;
         4)
-            clear
             list_file
             ;;
         5)
-            clear
             size_of_file
             ;;
         q | 6)
-            clear
             exit 0
             ;;
         *)
-            clear
             center_text "${RED}error: Enter correct choice [1-6]${ENDCOLOUR}"
             ;;
         esac
