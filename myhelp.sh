@@ -7,7 +7,6 @@ source colours.sh
 unix_help_main_menu() {
     local selection
     until [ "$selection" = "0" ]; do
-        clear
         echo -e "\n${COLOUR}1${ENDCOLOUR} -- File and Directory Management Commands"
         echo -e "\n${COLOUR}2${ENDCOLOUR} -- Text Processing Commands"
         echo -e "\n${COLOUR}3${ENDCOLOUR} -- System Status Commands"
@@ -33,7 +32,7 @@ unix_help_main_menu() {
             ;;
         *)
             clear
-            echo -e "${RED}error: Enter correct choice [1-4] ... ${ENDCOLOUR}"
+            center_text "${RED}error: Enter correct choice [1-4] ... ${ENDCOLOUR}"
             ;;
         esac
     done
@@ -64,7 +63,7 @@ expert_menu() {
         ;;
     *)
         clear
-        echo -e "${RED}error: Enter correct argument [file, text, status, help] ... see help for details.${ENDCOLOUR}"
+        center_text "${RED}error: Enter correct argument [file, text, status, help] ... see help for details.${ENDCOLOUR}"
         ;;
     esac
 }
@@ -78,5 +77,3 @@ else
     export COLOUR=$BLUE
     expert_menu "$1"
 fi
-
-echo -e "\nScript exited."
