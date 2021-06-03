@@ -14,14 +14,17 @@ current_date() {
             break
         fi
     done
+    clear
 }
 
 disk_usage() {
     echo -e "${COLOUR}Disk usage of system is:${ENDCOLOUR} \n $(df -h)" | less -r --prompt="Press q to exit"
+    clear
 }
 
 local_env_vars() {
     echo -e "The local and environment variables are: \n $(printenv)" | less -r --prompt="Press q to exit"
+    clear
 }
 
 process_status_info() {
@@ -33,12 +36,12 @@ process_status_info() {
         ps $pid_n
     fi
     read -n 1 -r -s -p $'Press any key to continue...\n'
+    clear
 }
 
 system_status_menu() {
     local selection
     until [ "$selection" = "0" ]; do
-        clear
         echo -e "\n${COLOUR}1${ENDCOLOUR} -- Display the current date and time"
         echo -e "\n${COLOUR}2${ENDCOLOUR} -- Current disk usage"
         echo -e "\n${COLOUR}3${ENDCOLOUR} -- List current local and environmental"
@@ -75,7 +78,7 @@ system_status_menu() {
             ;;
         *)
             clear
-            echo -e "${RED}error: Enter correct choice [1-5] ... ${ENDCOLOUR}"
+            center_text "${RED}error: Enter correct choice [1-5]${ENDCOLOUR}"
             ;;
         esac
     done

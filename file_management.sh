@@ -24,6 +24,7 @@ display_contents_of_file() {
     fi
 
     read -n 1 -r -s -p $'Press any key to continue...\n'
+    clear
 }
 
 remove_file() {
@@ -46,6 +47,7 @@ remove_file() {
     fi
 
     read -n 1 -r -s -p $'Press any key to continue...\n'
+    clear
 }
 
 copy_file() {
@@ -70,6 +72,7 @@ copy_file() {
     fi
 
     read -n 1 -r -s -p $'Press any key to continue...\n'
+    clear
 }
 
 list_file() {
@@ -89,6 +92,7 @@ list_file() {
     fi
 
     read -n 1 -r -s -p $'Press any key to continue...\n'
+    clear
 }
 
 size_of_file() {
@@ -115,17 +119,17 @@ size_of_file() {
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
     read -n 1 -r -s -p $'Press any key to continue...\n'
+    clear
 }
 
 file_management_menu() {
     local selection
     until [ "$selection" = "0" ]; do
-        clear
-        echo -e "\n${COLOUR}1${ENDCOLOUR} -- Display the contents of a file"
-        echo -e "\n${COLOUR}2${ENDCOLOUR} -- Remove a file"
-        echo -e "\n${COLOUR}3${ENDCOLOUR} -- Copy a file"
-        echo -e "\n${COLOUR}4${ENDCOLOUR} -- List a file"
-        echo -e "\n${COLOUR}5${ENDCOLOUR} -- Size of a file"
+        echo -e "${COLOUR}1${ENDCOLOUR} -- Display the contents of a file"
+        echo -e "${COLOUR}2${ENDCOLOUR} -- Remove a file"
+        echo -e "${COLOUR}3${ENDCOLOUR} -- Copy a file"
+        echo -e "${COLOUR}4${ENDCOLOUR} -- List a file"
+        echo -e "${COLOUR}5${ENDCOLOUR} -- Size of a file"
         if [ $MYHELP_MODE = novice ]; then
             echo -e "\n${COLOUR}6${ENDCOLOUR} -- Quit -- Return to main Menu"
         else
@@ -155,13 +159,13 @@ file_management_menu() {
             clear
             size_of_file
             ;;
-        6)
+        q | 6)
             clear
             exit 0
             ;;
         *)
             clear
-            echo -e "${RED}enter something useful${ENDCOLOUR}"
+            center_text "${RED}error: Enter correct choice [1-6]${ENDCOLOUR}"
             ;;
         esac
     done

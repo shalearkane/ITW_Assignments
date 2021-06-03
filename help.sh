@@ -16,6 +16,6 @@ echo -e "      \tThis section of myhelp use the commands grep, wc and diff for i
 echo -e "\n$status_t\tshows system status like current date time, disk usage, local and environmental variable and process status information"
 echo -e "      \tThis section of myhelp use the commands date, df, printenv and ps for its working."
 echo -e "\n$help_t  \tshows this help section."
-echo -e "      \tTo update this script to the latest release, git clone ${RED}https://github.com/shalearkane/ITW_Assignments${ENDCOLOUR} and use."
+echo -e "      \tTo update this script to the latest release, git clone ${RED}https://github.com/shalearkane/ITW_Assignments${ENDCOLOUR}"
 
 read -n 1 -r -s -p $'Press any key to continue...\n'

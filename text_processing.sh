@@ -23,6 +23,7 @@ search_file() {
     fi
 
     read -n 1 -r -s -p $'Press any key to continue...\n'
+    clear
 }
 
 count_wc() {
@@ -48,6 +49,7 @@ count_wc() {
     fi
 
     read -n 1 -r -s -p $'Press any key to continue...\n'
+    clear
 }
 
 display_diff() {
@@ -92,12 +94,12 @@ display_diff() {
     done
 
     diff --color -y $file_1 $file_2 | less -r --prompt="Press q to exit"
+    clear
 }
 
 text_processing_menu() {
     local selection
     until [ "$selection" = "0" ]; do
-        clear
         echo -e "\n${COLOUR}1${ENDCOLOUR} -- Search a file for a pattern"
         echo -e "\n${COLOUR}2${ENDCOLOUR} -- Count lines, words, and characters in specified files"
         echo -e "\n${COLOUR}3${ENDCOLOUR} -- Display line differences between two files"
@@ -129,7 +131,7 @@ text_processing_menu() {
             ;;
         *)
             clear
-            echo -e "${RED}error: Enter correct choice [1-5] ... ${ENDCOLOUR}"
+            center_text "${RED}error: Enter correct choice [1-5]${ENDCOLOUR}"
             ;;
         esac
     done
