@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# shellcheck source=helper_func.sh
 source helper_func.sh
 source colours.sh
 
