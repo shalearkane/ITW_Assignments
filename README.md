@@ -2,9 +2,12 @@
 
 Here's the near complete ITW_Assignment_5 with extensive error reporting.
 
-Main features:
-1. Complete Wildcard support
-2. Good error reporting
-3. Colour coded menus
+## Main features:
+* Complete Wildcard support
+* Good error reporting
+* Friendly interface 
+    * Colour coded menus
+    * Good error reporting : no silently failing command
+    * Text overflow is handled with scrolling support
 
 Please test and notify me about bugs.
