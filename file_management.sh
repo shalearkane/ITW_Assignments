@@ -23,7 +23,7 @@ display_contents_of_file() {
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
 
-    read -n 1 -r -s -p $'Press any key to continue...\n'
+    read -n 1 -r -s -p $'\nPress any key to continue... '
     clear
 }
 
@@ -46,7 +46,7 @@ remove_file() {
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
 
-    read -n 1 -r -s -p $'Press any key to continue...\n'
+    read -n 1 -r -s -p $'\nPress any key to continue... '
     clear
 }
 
@@ -71,7 +71,7 @@ copy_file() {
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
 
-    read -n 1 -r -s -p $'Press any key to continue...\n'
+    read -n 1 -r -s -p $'\nPress any key to continue... '
     clear
 }
 
@@ -91,7 +91,7 @@ list_file() {
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
 
-    read -n 1 -r -s -p $'Press any key to continue...\n'
+    read -n 1 -r -s -p $'\nPress any key to continue... '
     clear
 }
 
@@ -118,13 +118,14 @@ size_of_file() {
     if [[ $flag != 1 && ! -d "$s" ]]; then
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
-    read -n 1 -r -s -p $'Press any key to continue...\n'
+    read -n 1 -r -s -p $'\nPress any key to continue... '
     clear
 }
 
 file_management_menu() {
     local selection
     until [ "$selection" = "0" ]; do
+        center_text "${BGCOLOUR}FILE MENU${ENDCOLOUR}" " "
         echo -e "${COLOUR}1${ENDCOLOUR} -- Display the contents of a file"
         echo -e "${COLOUR}2${ENDCOLOUR} -- Remove a file"
         echo -e "${COLOUR}3${ENDCOLOUR} -- Copy a file"
@@ -136,7 +137,7 @@ file_management_menu() {
             echo -e "\n${COLOUR}6${ENDCOLOUR} -- Exit Program"
         fi
 
-        center_text_prompt "\b\bEnter your choice: " " "
+        center_text_prompt "\b\b\b\b\b\b\bEnter your choice: " " "
         read -n 1 -r selection
         clear
         case $selection in
@@ -160,6 +161,7 @@ file_management_menu() {
             ;;
         *)
             center_text "${RED}error: Enter correct choice [1-6]${ENDCOLOUR}"
+            selection=
             ;;
         esac
     done

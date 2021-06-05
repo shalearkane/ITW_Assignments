@@ -22,7 +22,7 @@ search_file() {
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
 
-    read -n 1 -r -s -p $'Press any key to continue...\n'
+    read -n 1 -r -s -p $'\nPress any key to continue... '
     clear
 }
 
@@ -48,7 +48,7 @@ count_wc() {
         echo -e "${RED}File not found${ENDCOLOUR}"
     fi
 
-    read -n 1 -r -s -p $'Press any key to continue...\n'
+    read -n 1 -r -s -p $'\nPress any key to continue... '
     clear
 }
 
@@ -100,6 +100,7 @@ display_diff() {
 text_processing_menu() {
     local selection
     until [ "$selection" = "0" ]; do
+        center_text "${BGCOLOUR}TEXT MENU${ENDCOLOUR}" " "
         echo -e "\n${COLOUR}1${ENDCOLOUR} -- Search a file for a pattern"
         echo -e "\n${COLOUR}2${ENDCOLOUR} -- Count lines, words, and characters in specified files"
         echo -e "\n${COLOUR}3${ENDCOLOUR} -- Display line differences between two files"
@@ -110,7 +111,7 @@ text_processing_menu() {
             echo -e "\n${COLOUR}4${ENDCOLOUR} -- Quit -- Exit Program"
         fi
 
-        center_text_prompt "\b\bEnter your choice: " " "
+        center_text_prompt "\b\b\b\b\b\b\bEnter your choice: " " "
         read -n 1 -r selection
         clear
         case $selection in
@@ -128,6 +129,7 @@ text_processing_menu() {
             ;;
         *)
             center_text "${RED}error: Enter correct choice [1-5]${ENDCOLOUR}"
+            selection=
             ;;
         esac
     done

@@ -35,13 +35,14 @@ process_status_info() {
     else
         ps $pid_n
     fi
-    read -n 1 -r -s -p $'Press any key to continue...\n'
+    read -n 1 -r -s -p $'\nPress any key to continue... '
     clear
 }
 
 system_status_menu() {
     local selection
     until [ "$selection" = "0" ]; do
+        center_text "${BGCOLOUR}STATUS MENU${ENDCOLOUR}" " "
         echo -e "\n${COLOUR}1${ENDCOLOUR} -- Display the current date and time"
         echo -e "\n${COLOUR}2${ENDCOLOUR} -- Current disk usage"
         echo -e "\n${COLOUR}3${ENDCOLOUR} -- List current local and environmental"
@@ -53,7 +54,7 @@ system_status_menu() {
             echo -e "\n${COLOUR}5${ENDCOLOUR} -- Quit -- Exit Program"
         fi
 
-        center_text_prompt "Enter your choice: " " "
+        center_text_prompt "\b\b\b\b\b\b\bEnter your choice: " " "
         read -n 1 -r selection
         clear
         case $selection in
@@ -74,6 +75,7 @@ system_status_menu() {
             ;;
         *)
             center_text "${RED}error: Enter correct choice [1-5]${ENDCOLOUR}"
+            selection=
             ;;
         esac
     done

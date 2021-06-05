@@ -18,5 +18,5 @@ echo -e "      \tThis section of myhelp use the commands date, df, printenv and 
 echo -e "\n$help_t  \tshows this help section."
 echo -e "      \tTo update this script to the latest release, git clone ${RED}https://github.com/shalearkane/ITW_Assignments${ENDCOLOUR}"
 
-read -n 1 -r -s -p $'Press any key to continue...\n'
+read -n 1 -r -s -p $'\nPress any key to continue... '
 clear
