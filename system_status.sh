@@ -43,15 +43,15 @@ system_status_menu() {
     local selection
     until [ "$selection" = "0" ]; do
         center_text "${BGCOLOUR}STATUS MENU${ENDCOLOUR}" " "
-        echo -e "\n${COLOUR}1${ENDCOLOUR} -- Display the current date and time"
-        echo -e "\n${COLOUR}2${ENDCOLOUR} -- Current disk usage"
-        echo -e "\n${COLOUR}3${ENDCOLOUR} -- List current local and environmental"
-        echo -e "\n${COLOUR}4${ENDCOLOUR} -- Display process status information"
+        echo -e "${COLOUR}1${ENDCOLOUR} -- Display the current date and time"
+        echo -e "${COLOUR}2${ENDCOLOUR} -- Current disk usage"
+        echo -e "${COLOUR}3${ENDCOLOUR} -- List current local and environmental"
+        echo -e "${COLOUR}4${ENDCOLOUR} -- Display process status information"
 
         if [ $MYHELP_MODE = novice ]; then
-            echo -e "\n${COLOUR}5${ENDCOLOUR} -- Quit -- Return to main Menu"
+            echo -e "${COLOUR}5${ENDCOLOUR} -- Quit -- Return to main Menu\n"
         else
-            echo -e "\n${COLOUR}5${ENDCOLOUR} -- Quit -- Exit Program"
+            echo -e "${COLOUR}5${ENDCOLOUR} -- Quit -- Exit Program\n"
         fi
 
         center_text_prompt "\b\b\b\b\b\b\bEnter your choice: " " "

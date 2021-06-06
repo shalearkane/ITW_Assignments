@@ -101,14 +101,14 @@ text_processing_menu() {
     local selection
     until [ "$selection" = "0" ]; do
         center_text "${BGCOLOUR}TEXT MENU${ENDCOLOUR}" " "
-        echo -e "\n${COLOUR}1${ENDCOLOUR} -- Search a file for a pattern"
-        echo -e "\n${COLOUR}2${ENDCOLOUR} -- Count lines, words, and characters in specified files"
-        echo -e "\n${COLOUR}3${ENDCOLOUR} -- Display line differences between two files"
+        echo -e "${COLOUR}1${ENDCOLOUR} -- Search a file for a pattern"
+        echo -e "${COLOUR}2${ENDCOLOUR} -- Count lines, words, and characters in specified files"
+        echo -e "${COLOUR}3${ENDCOLOUR} -- Display line differences between two files"
 
         if [ $MYHELP_MODE = novice ]; then
-            echo -e "\n${COLOUR}4${ENDCOLOUR} -- Quit -- Return to main Menu"
+            echo -e "${COLOUR}4${ENDCOLOUR} -- Quit -- Return to main Menu\n"
         else
-            echo -e "\n${COLOUR}4${ENDCOLOUR} -- Quit -- Exit Program"
+            echo -e "${COLOUR}4${ENDCOLOUR} -- Quit -- Exit Program\n"
         fi
 
         center_text_prompt "\b\b\b\b\b\b\bEnter your choice: " " "

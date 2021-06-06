@@ -132,9 +132,9 @@ file_management_menu() {
         echo -e "${COLOUR}4${ENDCOLOUR} -- List a file"
         echo -e "${COLOUR}5${ENDCOLOUR} -- Size of a file"
         if [ $MYHELP_MODE = novice ]; then
-            echo -e "\n${COLOUR}6${ENDCOLOUR} -- Quit -- Return to main Menu"
+            echo -e "${COLOUR}6${ENDCOLOUR} -- Quit -- Return to main Menu\n"
         else
-            echo -e "\n${COLOUR}6${ENDCOLOUR} -- Exit Program"
+            echo -e "${COLOUR}6${ENDCOLOUR} -- Exit Program\n"
         fi
 
         center_text_prompt "\b\b\b\b\b\b\bEnter your choice: " " "

@@ -7,10 +7,10 @@ unix_help_main_menu() {
     local selection
     until [ "$selection" = "0" ]; do
         center_text "${BGCOLOUR}MAIN MENU${ENDCOLOUR}" " "
-        echo -e "\n${COLOUR}1${ENDCOLOUR} -- File and Directory Management Commands"
-        echo -e "\n${COLOUR}2${ENDCOLOUR} -- Text Processing Commands"
-        echo -e "\n${COLOUR}3${ENDCOLOUR} -- System Status Commands"
-        echo -e "\n${COLOUR}4${ENDCOLOUR} -- Exit\n"
+        echo -e "${COLOUR}1${ENDCOLOUR} -- File and Directory Management Commands"
+        echo -e "${COLOUR}2${ENDCOLOUR} -- Text Processing Commands"
+        echo -e "${COLOUR}3${ENDCOLOUR} -- System Status Commands"
+        echo -e "${COLOUR}4${ENDCOLOUR} -- Exit\n"
         center_text_prompt "\b\b\b\b\b\b\bEnter your choice: " " "
         read -n 1 -r selection
         clear
