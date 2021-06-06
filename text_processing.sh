@@ -128,7 +128,7 @@ text_processing_menu() {
             exit 0
             ;;
         *)
-            center_text "${RED}error: Enter correct choice [1-5]${ENDCOLOUR}"
+            center_text "${RED}error: Enter correct choice [1-4]${ENDCOLOUR}"
             selection=
             ;;
         esac

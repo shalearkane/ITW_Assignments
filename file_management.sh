@@ -104,8 +104,7 @@ size_of_file() {
         if [[ -d "$s" ]]; then
             echo -e "${RED}error: $s is a directory, skipping...${ENDCOLOUR}"
             continue
-        fi
-        if [[ -f "$s" ]]; then
+        elif [[ -f "$s" ]]; then
             flag=1
             if [[ $(du -h "$s") ]] &>/dev/null ; then
                 echo -e "${COLOUR}The size of $s is:${ENDCOLOUR}\n$(du -h "$s" | cut -f1)" | less -r --prompt="Press q to continue"

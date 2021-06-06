@@ -23,7 +23,7 @@ disk_usage() {
 }
 
 local_env_vars() {
-    echo -e "The local and environment variables are: \n $(printenv)" | less -r --prompt="Press q to exit"
+    echo -e "${COLOUR}The local and environment variables are:${ENDCOLOUR} \n $(printenv)" | less -r --prompt="Press q to exit"
     clear
 }
 
