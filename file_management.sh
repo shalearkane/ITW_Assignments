@@ -59,7 +59,7 @@ copy_file() {
     for c in $file_path; do
         if [[ -f "$c" && -d "$file_copy_location" ]]; then
             flag=1
-            if cp -t "$file_copy_location" "$file_path"; then
+            if cp -t "$file_copy_location" "$c"; then
                 echo -e "Copied $c to $file_copy_location\n"
             else
                 echo -e "${RED}error: while copying${ENDCOLOUR}"
