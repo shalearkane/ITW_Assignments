@@ -14,7 +14,7 @@ display_contents_of_file() {
             if [[ -r "$f" ]]; then
                 echo -e "${COLOUR}The contents of $f is:${ENDCOLOUR} \n $(cat $f)" | less -r --prompt="Press q to exit"
             else
-                echo -e "${RED}The file is not readable${ENDCOLOUR}"
+                echo -e "${RED}$f is not readable${ENDCOLOUR}"
             fi
         fi
     done
@@ -37,7 +37,7 @@ remove_file() {
             if rm $r; then
                 echo -e "Deleted $r\n"
             else
-                echo -e "${RED}error: while deleting${ENDCOLOUR}"
+                echo -e "${RED}error: while deleting $r ${ENDCOLOUR}"
             fi
         fi
     done
@@ -62,7 +62,7 @@ copy_file() {
             if cp -t "$file_copy_location" "$c"; then
                 echo -e "Copied $c to $file_copy_location\n"
             else
-                echo -e "${RED}error: while copying${ENDCOLOUR}"
+                echo -e "${RED}error: while copying $c ${ENDCOLOUR}"
             fi
         fi
     done
@@ -103,7 +103,6 @@ size_of_file() {
     for s in $file_path; do
         if [[ -d "$s" ]]; then
             echo -e "${RED}error: $s is a directory, skipping...${ENDCOLOUR}"
-            continue
         elif [[ -f "$s" ]]; then
             flag=1
             if [[ $(du -h "$s") ]] &>/dev/null ; then
@@ -111,6 +110,8 @@ size_of_file() {
             else
                 echo "The size of file cannot be shown"
             fi
+        else 
+            echo "${RED}error: $s Not a file or directory ${ENDCOLOUR}"
         fi
     done
 
