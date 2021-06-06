@@ -107,8 +107,8 @@ size_of_file() {
         fi
         if [[ -f "$s" ]]; then
             flag=1
-            if du -h "$s" | cut -f1; then
-                echo
+            if [[ $(du -h "$s") ]] &>/dev/null ; then
+                echo -e "${COLOUR}The size of $s is:${ENDCOLOUR}\n$(du -h "$s" | cut -f1)" | less -r --prompt="Press q to continue"
             else
                 echo "The size of file cannot be shown"
             fi
